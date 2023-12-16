@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { initialItems } from "../lib/constants";
 import BackgroundHeading from "./BackgroundHeading";
@@ -7,7 +8,10 @@ import ItemList from "./ItemList";
 import Sidebar from "./Sidebar";
 
 function App() {
-  const [items, setItems] = useState(initialItems);
+
+  const itemsFromLocalStorage = JSON.parse(localStorage.getItem("items"));
+
+  const [items, setItems] = useState(itemsFromLocalStorage || initialItems);
 
   const handleAddItem = (newItemText) => {
     const newItem = {
@@ -61,7 +65,10 @@ function App() {
     setItems(newItems);
   }
 
-  //const totalNumOfItems = items.length;
+  // useEffect to interact with external system
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items))
+  }, [items]);
 
   return <>
     <BackgroundHeading />
