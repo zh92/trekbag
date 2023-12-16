@@ -6,9 +6,11 @@ export default function Sidebar({ handleAddItem, handleRemoveAllItems,
     handleMarkAllAsIncomplete }) {
     return <div className="sidebar">
         <AddItemForm onAddItem={handleAddItem} />
+        
         <ButtonGroup handleRemoveAllItems={handleRemoveAllItems} 
                 handleResetToInitial={handleResetToInitial}
                 handleMarkAllAsComplete={handleMarkAllAsComplete}
-                handleMarkAllAsIncomplete={handleMarkAllAsIncomplete} />
+                handleMarkAllAsIncomplete={handleMarkAllAsIncomplete}
+                 />
     </div>;
 }
